@@ -20,6 +20,7 @@ namespace SBUExtractor
                                                                                 //, new JpegFinder(),
                                                                                 , new FilesNew()
                                                                                 , new SMMExtraction()
+                                                                                , new SPBExtraction()
                                                                           };
 
         public Main()

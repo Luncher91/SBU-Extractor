@@ -15,7 +15,7 @@ namespace SBUExtractor.DataExtraction
         public static readonly byte[] SAMSUNG_BACKUP_AES_IV  = Encoding.UTF8.GetBytes("afie,crywlxoetka");
         public static readonly byte[] SAMSUNG_BACKUP_AES_KEY = Encoding.UTF8.GetBytes("epovviwlx,dirwq;sor0-fvksz,erwog");
 
-        internal static string Decrypt(string fromFile)
+        internal static string Decrypt(string fromFile, Action<int> blockExtracted = null)
         {
             string aimingFile = Path.GetTempPath() + Guid.NewGuid().ToString() + ".smm.xml";
 
@@ -35,6 +35,9 @@ namespace SBUExtractor.DataExtraction
                         var cryptoAlgorithmn = GetCryptoAlgorithm().CreateDecryptor(SAMSUNG_BACKUP_AES_KEY, SAMSUNG_BACKUP_AES_IV);
                         int transformed = cryptoAlgorithmn.TransformBlock(input, 0, readBytes, output, 0);
                         outputFile.Write(output, 0, transformed);
+
+                        // call back progress
+                        blockExtracted?.Invoke(transformed);
 
                         // drop sixteen 0x10 bytes
                         readBytes = inputFile.Read(input, 0, input.Length);
