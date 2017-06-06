@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -145,14 +142,13 @@ namespace SBUExtractor.DataExtraction
                 Directory.CreateDirectory(ExtractDataTo);
 
             // Open the SBU-File
-            StreamReader sbu = new StreamReader(File.OpenRead(ExtractDataFrom));
-
-            // Set the ProgressEnds to the length of the SBU-File
-            ProgressEnds = sbu.BaseStream.Length;
-            // the Progressbar has not to be closed to early
-            Progress = -2;
-            // close sbu file
-            sbu.Close();
+            using (StreamReader sourceFile = new StreamReader(File.OpenRead(ExtractDataFrom)))
+            {
+                // Set the ProgressEnds to the length of the SBU-File
+                ProgressEnds = sourceFile.BaseStream.Length;
+                // the Progressbar has not to be closed to early
+                Progress = -2;
+            }
 
             // create Progressbar window
             Progressbar pb = new Progressbar("Extracting " + Label + "...", "Bytes");

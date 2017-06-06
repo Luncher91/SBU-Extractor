@@ -70,8 +70,10 @@
     <Compile Include="DataExtraction\FilesNew.cs" />
     <Compile Include="DataExtraction\Jpeg.cs" />
     <Compile Include="DataExtraction\JpegFinder.cs" />
+    <Compile Include="DataExtraction\KiesCompression.cs" />
     <Compile Include="DataExtraction\KiesEncryption.cs" />
     <Compile Include="DataExtraction\SMMExtraction.cs" />
+    <Compile Include="DataExtraction\SPBExtraction.cs" />
     <Compile Include="DataExtraction\VCard.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
