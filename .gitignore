@@ -1,3 +1,5 @@
 obj
 bin
 /.vs/SBUExtractor/v14/.suo
+/SBUExtractor/SBUExtractor.csproj.user
+/SBUExtractor/SBUExtractor.snk
