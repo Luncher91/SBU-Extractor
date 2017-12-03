@@ -8,7 +8,7 @@ A program to export data from Samsung KIES Backup files.
 
 The .smm file is part of a more recent backup strategy of Samsung Kies.
 
-# Comming Soon 
+# Potential Extensions
 - .spb (phonbook alias contacts)
 - .ssc (calendar data)
 
